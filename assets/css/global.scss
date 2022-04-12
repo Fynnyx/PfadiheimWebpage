@@ -1,5 +1,19 @@
 * {
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
-    color: black;
+    color: $black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header.default-nav {
+    width: 100vw;
+    // background-color: $black-10;
+    border-bottom: 0.1rem $black solid;
+    .material-icon {
+        align-self: center;
+    }
+    a {
+        text-decoration: none;
+    }
 }
