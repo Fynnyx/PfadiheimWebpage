@@ -1,7 +1,11 @@
 <template>
   <div class="reservation-form">
       <form action="#">
-          <input type="text">
+          <label for="firstname">Vorname</label>
+          <input type="text" id="firstname" placeholder="Vorname">
+
+          <label for="lastname">Nachname</label>
+          <input type="text" id="lastname" placeholder="Nachname">
           
       </form>
   </div>
@@ -13,6 +17,12 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.reservation-form {
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 </style>

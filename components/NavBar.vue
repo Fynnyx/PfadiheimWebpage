@@ -1,151 +1,194 @@
 <template>
-  <ul class="navbar__list">
-    <li class="navbar__list__logo">
+  <nav class="navbar__list">
+    <div class="navbar__list__logo">
       <nuxt-link to="/">
         <img src="~/assets/images/logo.png" alt="logo" />
       </nuxt-link>
-    </li>
-    <li>
-      <div class="navbar__list__item">
+    </div>
+    <div class="navbar__list__burger">
+      <button @click="[(mobileOpen = !mobileOpen), $nuxt.$emit('openMobile')]">
+        <span class="material-icons" aria-hidden="true">menu</span>
+      </button>
+    </div>
+    <div class="navbar__list__dropdowns">
+      <div
+        class="navbar__list__item"
+        :class="{ 'navbar__list__item--open': mobileOpen }"
+      >
         <nuxt-link to="/" class="navbar__list__item__title">Home</nuxt-link>
       </div>
-    </li>
-    <li>
-      <NavDropdown
-        title="Pfadiheim"
-        :items="[
-          {
-            title: 'Home',
-            link: '/',
-          },
-          {
-            title: 'Anreise',
-            link: '/pfadiheim/anreise',
-          },
-          {
-            title: 'Umgebung',
-            link: '/pfadiheim/umgebung',
-          },
-          {
-            title: 'Rundgang',
-            link: '/pfadiheim/rundgang',
-          },
-        ]"
-      />
-    </li>
-    <li>
-      <NavDropdown
-        title="Miete + Preise"
-        :items="[
-          {
-            title: 'Preise',
-            link: '/preise',
-          },
-        ]"
-      />
-    </li>
-    <li>
-      <NavDropdown
-        title="Administratives"
-        :items="[
-          {
-            title: 'Vertrag',
-            link: 'admin/vertrag',
-          },
-          {
-            title: 'Schlussreinigung',
-            link: 'admin/schlussreinigung',
-          },
-          {
-            title: 'Heimordung',
-            link: 'admin/heimordung',
-          }
-        ]"
-      />
-    </li>
-    <li>
-      <NavDropdown 
-        title="Verein"
-        :items="[
-          {
-            title: 'Mitglieder',
-            link: '/verein/mitglieder',
-          },
-          {
-            title: 'Statuten',
-            link: '/verein/statuten',
-          },
-          {
-            title: 'Geschichte',
-            link: '/verein/geschichte',
-          }
-        ]"   
-      />
-    </li>
-    <li>
-      <div class="navbar__reservation">
-        <nuxt-link to="/reservation"
-          ><button>
-            <span>Zur Anfrage</span>
-            <span class="material-icons"> chevron_right </span>
-          </button></nuxt-link
-        >
+      <div
+        class="navbar__list__item"
+        :class="{ 'navbar__list__item--open': mobileOpen }"
+      >
+        <NavDropdown
+          title="Pfadiheim"
+          :items="[
+            {
+              title: 'Home',
+              link: '/',
+            },
+            {
+              title: 'Anreise',
+              link: '/anreise',
+            },
+            {
+              title: 'Umgebung',
+              link: '/umgebung',
+            },
+          ]"
+        />
       </div>
-    </li>
-  </ul>
+      <div
+        class="navbar__list__item"
+        :class="{ 'navbar__list__item--open': mobileOpen }"
+      >
+        <NavDropdown
+          title="Miete + Preise"
+          :items="[
+            {
+              title: 'Preise',
+              link: '/preise',
+            },
+          ]"
+        />
+      </div>
+      <div
+        class="navbar__list__item"
+        :class="{ 'navbar__list__item--open': mobileOpen }"
+      >
+        <NavDropdown
+          title="Administratives"
+          :items="[
+            {
+              title: 'Vertrag',
+              link: '/vertrag',
+            },
+            {
+              title: 'Schlussreinigung',
+              link: '/schlussreinigung',
+            },
+            {
+              title: 'Heimordung',
+              link: '/heimordung',
+            },
+          ]"
+        />
+      </div>
+      <div
+        class="navbar__list__item"
+        :class="{ 'navbar__list__item--open': mobileOpen }"
+      >
+        <NavDropdown
+          title="Verein"
+          :items="[
+            {
+              title: 'Mitglieder',
+              link: '/mitglieder',
+            },
+            {
+              title: 'Statuten',
+              link: '/statuten',
+            },
+            {
+              title: 'Geschichte',
+              link: '/geschichte',
+            },
+          ]"
+        />
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
   name: "NavBar",
+  props: {
+    mobileOpen: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  created() {},
 };
 </script>
-
 <style lang="scss" scoped>
 .navbar {
   &__list {
     &__logo {
       img {
-        height: 2rem;
-        width: auto;
+        width: 2rem;
       }
-      align-items: center;
+    }
+    &__burger {
+      display: none;
+    }
+    &__dropdowns {
+      display: flex;
+      flex-direction: row;
     }
     &__item {
-      &__title {
-        &:hover {
-          text-decoration: underline;
-        }
-        padding-bottom: 0.75rem;
+      color: $black;
+      padding: 10px 20px;
+      position: relative;
+      text-align: center;
+      display: flex;
+      transition: 0.4;
+      a:hover {
+        text-decoration: underline;
+      }
+      a {
+        color: inherit;
         text-decoration: none;
       }
     }
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
     align-items: center;
-    list-style: none;
-    border-bottom: solid $black-20 0.125rem;
+    justify-content: left;
+    padding-left: 1rem;
   }
-  &__reservation {
-    a {
-      text-decoration: none;
+  display: flex;
+}
+
+@media screen and (max-width: $sm) {
+  .nav-dropdown {
+    &__title {
+      border-bottom: solid $black-40;
     }
-    button {
-      .material-icons {
-        align-self: center;
+    &__sub-menu {
+      display: block;
+    }
+  }
+  .navbar {
+    &__list {
+      &__burger {
+        button {
+          background-color: transparent;
+          border: none;
+          width: 100%;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        display: block;
       }
-      &:hover {
-        cursor: pointer;
+      &__dropdowns {
+        display: flex;
+        flex-direction: row;
+        // align-self: ;
+      }
+      &__item {
+        &--open {
+          display: flex;
+          flex-direction: column;
+        }
+        display: none;
       }
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: $red-80;
-      border-radius: 0.25rem;
-      border: $black-20 solid 0.125rem;
+      flex-direction: row;
     }
-    margin-left: auto;
+    display: flex;
   }
 }
 </style>

@@ -1,3 +1,5 @@
+@import "./global/default-content.scss";
+
 * {
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
@@ -6,13 +8,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 header.default-nav {
-    width: 100vw;
-    // background-color: $black-10;
+    width: 100%;
     border-bottom: 0.1rem $black solid;
+    box-shadow: 0 8px 8px rgb(10 10 10 / 7%);
+
     .material-icon {
         align-self: center;
     }
+
     a {
         text-decoration: none;
     }

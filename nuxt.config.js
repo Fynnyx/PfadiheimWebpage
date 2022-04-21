@@ -1,14 +1,15 @@
+import { titleDefault } from "./assets/static/properties";
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Pfadiheim Baden',
+    title: titleDefault,
     htmlAttrs: {
       lang: 'de'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'This is the webpage for the scout house ind Baden CH.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -38,7 +39,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    'nuxt-material-design-icons'
+    'nuxt-material-design-icons',
+    '@nuxt/content'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
