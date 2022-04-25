@@ -1,6 +1,6 @@
 
 <!-- <img src="~/assets/images/pfadiheim_front.jpeg" aria-hidden="true" > -->
-<image-component src="pfadiheim_front.jpeg" alt="Pfadiheim Front"></image-component>
+<image-component src="pfadiheim_front.jpeg" alt="Pfadiheim Front" footnote="Pfadiheim Front"></image-component>
 
 - 2 grosse Aufenthaltsräume
 - 30 Schlafplätze
