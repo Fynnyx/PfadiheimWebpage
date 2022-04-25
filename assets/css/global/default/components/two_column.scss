@@ -1,0 +1,31 @@
+.two-column {
+    &__title {
+        >span {
+            font-size: calc($normal - 2px);
+            font-weight: bold;
+        }
+
+        width: 30%;
+    }
+
+    &__value,
+    &__section {
+        * {
+            font-size: calc($normal - 1px);
+        }
+    }
+
+    &__value {
+        width: 70%;
+    }
+
+    &__section {
+        padding-top: 0.5rem;
+    }
+
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 0.75rem;
+    width: 100%;
+    border-bottom: solid 1px $black-80;
+}
