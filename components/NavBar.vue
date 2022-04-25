@@ -69,8 +69,8 @@
               link: '/schlussreinigung',
             },
             {
-              title: 'Heimordung',
-              link: '/heimordung',
+              title: 'Heimordnung',
+              link: '/heimordnung',
             },
           ]"
         />
