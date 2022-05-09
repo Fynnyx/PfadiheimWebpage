@@ -1,6 +1,6 @@
 <template>
   <div class="default-content">
-    <h1>Wilkommen im Pfadiheim Baden</h1>
+    <h1>Willkommen im Pfadiheim Baden</h1>
     <nuxt-content :document="doc" />
   </div>
 </template>

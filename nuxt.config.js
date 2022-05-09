@@ -21,6 +21,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     "~/assets/css/global.scss",
+    "~/assets/css/global/default/main.scss"
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -37,6 +38,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    'nuxt-buefy',
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     'nuxt-material-design-icons',

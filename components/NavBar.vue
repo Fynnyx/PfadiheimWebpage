@@ -1,194 +1,71 @@
 <template>
-  <nav class="navbar__list">
-    <div class="navbar__list__logo">
-      <nuxt-link to="/">
-        <img src="~/assets/images/logo.png" alt="logo" />
-      </nuxt-link>
-    </div>
-    <div class="navbar__list__burger">
-      <button @click="[(mobileOpen = !mobileOpen), $nuxt.$emit('openMobile')]">
-        <span class="material-icons" aria-hidden="true">menu</span>
-      </button>
-    </div>
-    <div class="navbar__list__dropdowns">
-      <div
-        class="navbar__list__item"
-        :class="{ 'navbar__list__item--open': mobileOpen }"
-      >
-        <nuxt-link to="/" class="navbar__list__item__title">Home</nuxt-link>
-      </div>
-      <div
-        class="navbar__list__item"
-        :class="{ 'navbar__list__item--open': mobileOpen }"
-      >
-        <NavDropdown
-          title="Pfadiheim"
-          :items="[
-            {
-              title: 'Home',
-              link: '/',
-            },
-            {
-              title: 'Anreise',
-              link: '/anreise',
-            },
-            {
-              title: 'Umgebung',
-              link: '/umgebung',
-            },
-          ]"
-        />
-      </div>
-      <div
-        class="navbar__list__item"
-        :class="{ 'navbar__list__item--open': mobileOpen }"
-      >
-        <NavDropdown
-          title="Miete + Preise"
-          :items="[
-            {
-              title: 'Preise',
-              link: '/preise',
-            },
-          ]"
-        />
-      </div>
-      <div
-        class="navbar__list__item"
-        :class="{ 'navbar__list__item--open': mobileOpen }"
-      >
-        <NavDropdown
-          title="Administratives"
-          :items="[
-            {
-              title: 'Vertrag',
-              link: '/vertrag',
-            },
-            {
-              title: 'Schlussreinigung',
-              link: '/schlussreinigung',
-            },
-            {
-              title: 'Heimordnung',
-              link: '/heimordnung',
-            },
-          ]"
-        />
-      </div>
-      <div
-        class="navbar__list__item"
-        :class="{ 'navbar__list__item--open': mobileOpen }"
-      >
-        <NavDropdown
-          title="Verein"
-          :items="[
-            {
-              title: 'Mitglieder',
-              link: '/mitglieder',
-            },
-            {
-              title: 'Statuten',
-              link: '/statuten',
-            },
-            {
-              title: 'Geschichte',
-              link: '/geschichte',
-            },
-          ]"
-        />
-      </div>
-    </div>
+  <nav class="navbar">
+    <template>
+      <b-navbar>
+        <template #brand>
+          <b-navbar-item tag="router-link" :to="{ path: '/' }">
+            <img src="~/assets/images/logo.png" alt="Pfadiheim Baden Logo" />
+          </b-navbar-item>
+        </template>
+        <template #start>
+          <div
+            style="display: flex"
+            v-for="navbaritem in navbar"
+            :key="navbaritem.title"
+          >
+            <b-navbar-dropdown
+              v-if="navbaritem.children.length !== 0"
+              :label="navbaritem.title"
+              class="is-hoverable"
+            >
+              <nuxt-link
+                v-for="page in navbaritem.children"
+                :key="page.title"
+                :to="page.href"
+                class="navbar-item"
+              >
+                {{ page.title }}
+              </nuxt-link>
+            </b-navbar-dropdown>
+            <nuxt-link v-else :to="navbaritem.href" class="navbar-item">
+              {{ navbaritem.title }}
+            </nuxt-link>
+          </div>
+
+          <!-- <template #start>
+            <b-navbar-item href="#">
+                Home
+            </b-navbar-item>
+            <b-navbar-item href="#">
+                Documentation
+            </b-navbar-item>
+            <b-navbar-dropdown label="Info">
+                <b-navbar-item href="#">
+                    About
+                </b-navbar-item>
+                <b-navbar-item href="#">
+                    Contact
+                </b-navbar-item>
+            </b-navbar-dropdown> -->
+        </template>
+
+        <template #end></template>
+      </b-navbar>
+    </template>
   </nav>
 </template>
 
 <script>
+import { navbar } from "~/assets/static/navbar.js";
 export default {
-  name: "NavBar",
   props: {
-    mobileOpen: {
-      type: Boolean,
-      default: false,
+    navbar: {
+      type: Array,
+      default: () => navbar,
     },
   },
-  created() {},
 };
 </script>
-<style lang="scss" scoped>
-.navbar {
-  &__list {
-    &__logo {
-      img {
-        width: 2rem;
-      }
-    }
-    &__burger {
-      display: none;
-    }
-    &__dropdowns {
-      display: flex;
-      flex-direction: row;
-    }
-    &__item {
-      color: $black;
-      padding: 10px 20px;
-      position: relative;
-      text-align: center;
-      display: flex;
-      transition: 0.4;
-      a:hover {
-        text-decoration: underline;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-    }
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-left: 1rem;
-  }
-  display: flex;
-}
 
-@media screen and (max-width: $sm) {
-  .nav-dropdown {
-    &__title {
-      border-bottom: solid $black-40;
-    }
-    &__sub-menu {
-      display: block;
-    }
-  }
-  .navbar {
-    &__list {
-      &__burger {
-        button {
-          background-color: transparent;
-          border: none;
-          width: 100%;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-        display: block;
-      }
-      &__dropdowns {
-        display: flex;
-        flex-direction: row;
-        // align-self: ;
-      }
-      &__item {
-        &--open {
-          display: flex;
-          flex-direction: column;
-        }
-        display: none;
-      }
-      display: flex;
-      flex-direction: row;
-    }
-    display: flex;
-  }
-}
+<style>
 </style>

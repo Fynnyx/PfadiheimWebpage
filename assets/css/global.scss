@@ -1,7 +1,7 @@
 @import './global/default.scss';
 
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: $normal;
     color: $black;
     margin: 0;
@@ -11,8 +11,8 @@
 
 html,
 body {
-    > div {
-        > div {
+    > div.__nuxt{
+        > div.__layout {
             height: 100%;
         }
         height: 100%;
@@ -28,23 +28,4 @@ body {
 }
 .default-content {
     flex: 1
-}
-
-header.default-nav {
-    width: 100%;
-    border-bottom: 0.1rem $black solid;
-    box-shadow: 0 8px 8px rgb(10 10 10 / 7%);
-
-    .material-icon {
-        align-self: center;
-    }
-
-    a {
-        text-decoration: none;
-    }
-    
-    p {
-        padding: -16px;
-        margin: 0;
-    }
 }

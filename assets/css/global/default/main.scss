@@ -1,0 +1,40 @@
+@import '~bulma/sass/utilities/_all';
+
+$primary: $red;
+$primary-light: findLightColor($primary);
+$primary-dark: findDarkColor($primary);
+$primary-invert: findColorInvert($primary);
+
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+$colors: mergeColorMaps(
+    (
+        "white": (
+            $white, 
+            $black
+        ),
+        "primary": (
+            $primary, 
+            $primary-light, 
+            $primary-dark, 
+            $primary-invert
+        ),
+        "link": (
+            $link-invert,
+            $link,
+            $link-light,
+            $link-dark,
+        ),
+    ),
+    $custom-colors
+);
+
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
+
+
