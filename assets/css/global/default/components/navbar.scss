@@ -1,17 +1,15 @@
-// nav {
-//     a {
-//         color: inherit;
-//         &:hover {
-//             color: inherit !important;
-//         }
-//         &:focus {
-//             color: inherit !important;
-//         }
-//         &:active {
-//             color: inherit !important;
-//         }
-//         &::after {
-//             border-color: $red !important;
-//         }
-//     }
-// }
+.navbar {
+    &-for {
+        display: flex;
+    }
+
+    @media screen and (max-width: 1024px) {
+        &-for {
+            display: block !important;
+            width: 100%;
+        }
+        &-menu {
+            box-shadow: none !important;
+        }
+    }
+}

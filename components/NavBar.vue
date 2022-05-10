@@ -7,9 +7,9 @@
             <img src="~/assets/images/logo.png" alt="Pfadiheim Baden Logo" />
           </b-navbar-item>
         </template>
-        <template #start>
+        <template #start >
           <div
-            style="display: flex"
+            class="navbar-for"
             v-for="navbaritem in navbar"
             :key="navbaritem.title"
           >
@@ -31,22 +31,6 @@
               {{ navbaritem.title }}
             </nuxt-link>
           </div>
-
-          <!-- <template #start>
-            <b-navbar-item href="#">
-                Home
-            </b-navbar-item>
-            <b-navbar-item href="#">
-                Documentation
-            </b-navbar-item>
-            <b-navbar-dropdown label="Info">
-                <b-navbar-item href="#">
-                    About
-                </b-navbar-item>
-                <b-navbar-item href="#">
-                    Contact
-                </b-navbar-item>
-            </b-navbar-dropdown> -->
         </template>
 
         <template #end></template>

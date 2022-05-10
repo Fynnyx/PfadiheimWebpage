@@ -1,5 +1,5 @@
 <template>
-  <div :class="['two-column', { 'two-column--head': isHead }]">
+  <div class="two-column" :class="[{ 'two-column--head': isHead }, { 'small' : small}]">
     <div class="two-column__title">
       <span>{{ title }}</span>
     </div>
@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    small: {
+      type: Boolean,
+      default: false,
+    }
   },
   computed: {
     getValue() {
@@ -40,8 +44,6 @@ export default {
   },
   methods: {
     convertToMarkdown(text) {
-      console.log(this.sections);
-      console.log("type " + typeof text);
       return marked.parseInline(text, { breaks: true });
     },
   },

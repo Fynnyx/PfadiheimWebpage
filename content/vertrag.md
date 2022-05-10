@@ -3,7 +3,7 @@
     section: 
 ---
 
-# Vertrag
+<h1> Vertrag</h1>
 
 ## Vertragsbedingungen für das Pfadiheim "Rütibuck" Baden
 <br>
@@ -14,7 +14,8 @@
 </two-column>
 <two-column 
     title="Reservation/Vertrag" 
-    value='Anneliese Stäuble, Müslenstrasse 33, 5406 Rütihof, 076 481 56 77'>
+    value='Anneliese Stäuble, Müslenstrasse 33, 5406 Rütihof, 076 481 56 77'
+    >
 </two-column>
 <two-column 
     title="Übergabe/Abnahme"  
